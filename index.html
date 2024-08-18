@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dakshtech</title>
+    <link rel="stylesheet" href="HTML.css">
+</head>
+<body>
+    <!-- Video element -->
+    <div class="video-background">
+        <video id="background-video" autoplay muted loop>
+            <source id="video-source" src="videoplayback.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Content on the page -->
+    <div class="content">
+        <h1>Welcome to My Site</h1>
+        <p>This is some content on the page.</p>
+    </div>
+
+    <!-- Toggle button -->
+    <button id="toggle-button" class="toggle-button">Modes</button>
+
+    <!-- JavaScript to handle the button click -->
+    <script>
+        const videoElement = document.getElementById('background-video');
+        const videoSource = document.getElementById('video-source');
+        const toggleButton = document.getElementById('toggle-button');
+
+        // Array of video sources
+        const videos = ['videoplayback.mp4', 'videoplayback2.mp4'];
+        let currentVideoIndex = 0;
+
+        toggleButton.addEventListener('click', () => {
+            // Toggle the video source
+            currentVideoIndex = (currentVideoIndex + 1) % videos.length;
+            videoSource.src = videos[currentVideoIndex];
+            
+            // Reload the video with the new source
+            videoElement.load();
+            videoElement.play();
+        });
+    </script>
+</body>
+</html>

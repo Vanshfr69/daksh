@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Website</title>
+    <link rel="stylesheet" href="test.css">
+</head>
+<body>
+    <!-- Navigation bar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Video element -->
+    <div class="video-background">
+        <video id="background-video" autoplay muted loop>
+            <source id="video-source" src="videoplayback.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Content on the page -->
+    <div class="content" id="home">
+        <h1>Welcome to My Site</h1>
+        <p>This is some content on the page.</p>
+    </div>
+
+    <!-- Toggle button -->
+    <button id="toggle-button" class="toggle-button">Switch Video Mode</button>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <h2>About Me</h2>
+        <p>Hello! I am [Your Name], a student passionate about [your interests]. I enjoy working on projects that involve [your skills/interests].</p>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio-section">
+        <h2>My Projects</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="project1.jpg" alt="Project 1">
+                <h3>Project 1</h3>
+                <p>Description of Project 1.</p>
+            </div>
+            <!-- Add more portfolio items as needed -->
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <h2>Contact Me</h2>
+        <form action="#" method="post">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <input type="text" name="subject" placeholder="Subject" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 [Your Name]. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#"><img src="facebook-icon.png" alt="Facebook" class="social-icon"></a>
+            <a href="#"><img src="twitter-icon.png" alt="Twitter" class="social-icon"></a>
+        </div>
+    </footer>
+
+    <!-- JavaScript to handle the button click and smooth scrolling -->
+    <script>
+        const videoElement = document.getElementById('background-video');
+        const videoSource = document.getElementById('video-source');
+        const toggleButton = document.getElementById('toggle-button');
+
+        // Array of video sources
+        const videos = ['videoplayback.mp4', 'videoplayback2.mp4'];
+        let currentVideoIndex = 0;
+
+        toggleButton.addEventListener('click', () => {
+            // Toggle the video source
+            currentVideoIndex = (currentVideoIndex + 1) % videos.length;
+            videoSource.src = videos[currentVideoIndex];
+            
+            // Reload the video with the new source
+            videoElement.load();
+            videoElement.play();
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
